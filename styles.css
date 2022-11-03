@@ -251,6 +251,22 @@
   color: #d0d0d0;
 }
 
+.explainerBox {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  z-index: 5000;
+}
+.explainerBox span {
+  background-color: white;
+  border-radius: 6px;
+  padding: 6px;
+  display: block;
+  margin: auto;
+  max-width: 200px;
+}
+
 @font-face {
   font-family: "Archia";
   font-style: normal;

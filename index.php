@@ -22,14 +22,14 @@
 <body>
 <div id="main">
     <div id="menu-panel">
-        Welcome, <div id="active-username"></div> 
+        <!-- Welcome, <div id="active-username"></div> 
         
         <div class="hidden" id="user-marker">0</div>
-        <div class="hidden" id="temporary-img-id">no img</div>
+        <div class="hidden" id="temporary-img-id">no img</div> -->
     </div>
 
     <?php include_once "login.php" ?>
-    
+    <div class="explainerBox"><span>Click anywhere on the map to create a new task. Click on a marker to open a task.</span></div>
     <div id="mapid"></div>
 </div>
 
