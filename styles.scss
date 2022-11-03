@@ -1,0 +1,312 @@
+﻿
+$color-input-bg: #fafafa;
+$color-input-placeholder: #d0d0d0;
+
+$color-1: "darkslateblue";
+$color-2: "0f5862";
+
+$font-size-small: 14px;
+$font-size-large: 18px;
+$font-size-extra-large: 24px;
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    // font-family: "Product Sans Regular";
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    font-family:"archia" !important;
+    outline: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+  }
+
+.editable{
+border: 1px solid transparent; // hotfix for height jumping on empty div
+
+    &:empty:before{ // placeholder setup
+        content: attr(data-placeholder);
+        color: $color-input-placeholder;
+    }
+
+}
+
+/* MAIN MAP */
+
+#main{
+    height:100vh;
+    width:100vw;
+    position: relative;
+}
+
+.background-login{
+    height:100vh;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    background-color: white;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    transition: 0.3s all ease-in-out;
+}
+
+#wrapper-login{
+
+    max-width: 300px;
+    min-width: 200px;
+    background-color: orange;
+    padding: 36px 36px 36px 36px;
+    display: block;
+    margin: auto;
+    border-radius: 12px;
+
+    .label{
+        font-size: $font-size-extra-large;
+        font-weight: 700;
+        margin-bottom: 36px;
+        text-align: center;
+    }
+
+    .input{
+
+        background-color: white;
+        margin-bottom: 6px;
+        min-width: 200px;
+        border: 1px solid transparent;
+        font-size: $font-size-large;
+        padding: 6px;
+        border-radius: 6px;
+    }
+
+
+    #btn-login-submit{
+        border: 1px solid black;
+        text-align: center;
+        margin-top: 36px;
+        padding: 6px;
+        cursor: pointer;
+
+        &:hover{
+            opacity: 0.7;
+        }
+    }
+}
+
+#menu-panel{
+    position: absolute;
+    background-color: white;
+    padding: 6px;
+    border-radius: 0px 0px 0px 12px;
+    top: 0;
+    right: 0;
+    z-index: 500;
+
+    #user-marker{
+        color: red;
+        display: inline;
+    }
+}
+
+#mapid {
+    position: absolute;
+    left: 0; 
+    // top: 2000px;
+    height: 100%;
+    width: 100%;
+    cursor: crosshair;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    transition: 0.3s all;
+}
+
+.leaflet-popup-content{ // overriding default margins
+    margin: 0px;
+    min-width: 300px;
+}
+
+
+.popup-image-content{
+
+    top: 0;
+    left: 0;
+    margin: auto;
+    max-height: 250px;
+    overflow: scroll;
+    border-radius: 12px 12px 0px 0px;
+    position: relative;
+
+    .overlay{
+        position: absolute;
+        font-weight: 200;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px 12px 0px 0px;
+        opacity: 0.5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .line{
+            // border: 1px solid black;
+            text-align: center;
+            color: $color-1;
+        }
+    }
+
+    img{
+        width: 100%;
+        display: block;
+        margin: auto;
+        // border-radius: 12px 12px 0px 0px;
+    }
+
+    .controls-img-upload{
+        border: 1px solid black;
+        width: 100%;
+        display: none;
+    }
+}
+
+.popup-text-content{ // text content of the popup
+    
+    padding: 18px;
+    /* margin: 6px; */
+    /* background-color: white; */
+    /* width: 300px; */
+    font-size: 18px;
+    position: relative;
+
+    .title{
+        font-weight: 700;
+        margin-bottom: 12px;
+        text-align: left;
+        font-family: "Product Sans Bold";
+    }
+
+    .note{
+        font-size: $font-size-small;
+        margin-bottom: 12px;
+        font-weight: 100;
+    }
+
+    input.reward{
+        text-align: center;
+        padding: 6px;
+        border-radius: 24px;
+        background-color: $color-2;
+        color: black;
+        border: 1px solid $color-input-placeholder;
+        width: 100%;
+        left: 0px;
+    }
+
+    .reward{
+        font-size: inherit;
+        font-weight: 600;
+        text-align: center;
+        font-family: "Product Sans Bold";
+        position: relative;
+        margin-bottom: 18px;
+
+        .amount{
+            display:inline-block;
+            background-color: orange;
+            color: white;
+            padding: 6px;
+            border-radius: 24px;
+            width: 100%;
+        }
+    
+    }
+
+    .controls{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 6px;
+        margin-top: 18px;
+
+        .btn{
+            border: 1px solid black;
+            text-align: center;
+            // margin-top: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            &:hover{
+                opacity: 0.7;
+                cursor: pointer;
+            }
+
+            .label{
+                display: block;
+            }
+        }
+
+        .btn-delete-marker{
+            grid-column: span 2/auto;
+        }
+
+        .btn-start-fix{
+            // grid-column: span 2/auto;
+        }
+
+    } // end of .controls
+
+    // for empty popup
+
+    input{
+        border: none;
+        outline: none;
+
+        &::placeholder{
+            color: $color-input-placeholder;
+        }
+    }
+
+    textarea{
+        border: 0;
+        outline: 0;
+        resize: none;
+        background-color: $color-input-bg;
+    }
+
+    textarea.title{
+        height: 2.5em;
+        width: 100%;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        text-align: left;
+
+        &::placeholder{
+            color: $color-input-placeholder;
+        }
+
+    }
+
+    textarea.note{
+        font-size: 14px;
+        padding: 6px 0px 6px 0px;
+        margin-bottom: 6px;
+        text-align: left;
+        width: 100%;
+        height: 6em;
+
+        &::placeholder{
+            color: $color-input-placeholder;
+        }
+    }
+}
+
+@import "fonts.scss";
